@@ -1,0 +1,53 @@
+/* pages/searchPrice/searchPrice.wxss */
+.section {
+    /* border: solid 1rpx red; */
+    min-height: 100rpx;
+    margin: 0 auto;
+    width: 100%;
+    margin-bottom: 40rpx;
+}
+
+.section__title {
+    font-size:60rpx;
+}
+
+.picker {
+    height: 100rpx;
+    line-height: 100rpx;
+    text-decoration: underline;
+    /* border: solid 1px green; */
+    background-color:deepskyblue;
+}
+
+
+
+.flex-item {
+    line-height:50px;
+    text-align: center;
+    width: 33%;
+}
+
+.page-section{
+    margin-bottom: 20rpx;
+  }
+.flex-wrp {
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+    border: solid 1px red;
+}
+.bc_green {
+    background: green;
+    /* width:100px;  */
+    /* height: 50px; */
+}
+.bc_red {
+    background: red;
+    /* width:100px;  */
+    /* height: 50px; */
+}
+.bc_blue {
+    background: blue;
+    /* width:100px; */
+    /* height: 50px; */
+}

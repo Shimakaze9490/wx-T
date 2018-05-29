@@ -1,0 +1,46 @@
+
+<view class="container">
+    <view class="section__title">快递价格查询:</view>
+
+    <view class="section">
+        <picker mode="region" bindchange="bindRegionChange_start" value="{{region_start}}" custom-item="{{customItem}}">
+            <view class="picker">
+            寄出地址：
+            <p>{{region_start[0]}}，{{region_start[1]}}，{{region_start[2]}}</p>
+            </view>
+        </picker>
+    </view>
+
+    <view class="section">
+        <picker mode="region" bindchange="bindRegionChange_end" value="{{region_end}}" custom-item="{{customItem}}">
+            <view class="picker">
+                收件地址：
+                <p>{{region_end[0]}}，{{region_end[1]}}，{{region_end[2]}}</p>
+            </view>
+        </picker>
+    </view>
+
+    <view class="section">
+        <view class="section__title">flex-direction: row</view>
+        <view class="flex-wrp" style="flex-direction:row;">
+            <view class="flex-item bc_blue" bindtap="sub">-</view>
+            <view class="flex-item bc_red">{{weight}}</view>
+            <view class="flex-item bc_green" bindtap="add">+</view>
+        </view>
+    </view>
+
+    <view class="section">
+        <view>
+            <p>首重：</p>{{first_weight}}元
+        </view>
+        <view>
+            <p>续重：</p>{{s_weight}}元
+        </view>
+        <view>
+            <p>总价格：</p>{{price_totle}}元
+        </view>
+    </view>
+
+</view>
+
+

@@ -1,0 +1,43 @@
+{
+  "pages": [
+    "pages/searchPrice/searchPrice",
+    "pages/searchOrder/searchOrder",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/cart/cart",
+    "pages/user/user",
+    "pages/detail/detail",
+    "pages/NewOrder/NewOrder"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#000000",
+    "selectedColor": "#479de6",
+    "borderStyle": "dark",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "text": "查快递",
+        "pagePath": "pages/searchOrder/searchOrder"
+      },
+      {
+        "text": "查价格",
+        "pagePath": "pages/searchPrice/searchPrice"
+      },
+      {
+        "text": "我的订单",
+        "pagePath": "pages/cart/cart"
+      },
+      {
+        "text": "我的空间",
+        "pagePath": "pages/user/user"
+      }
+    ]
+  },
+  "debug": false
+}
