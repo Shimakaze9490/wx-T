@@ -1,2 +1,18 @@
-<!--pages/user/user.wxml-->
-<text>pages/user/user.wxml</text>
+<view class="cont">
+    <view class="head">
+        <image class="user_Image" src="{{user_Info.openId}}"></image>
+        <p>{{}}</p>
+    </view>
+    <view class="myInfo">
+        <view class="">个人信息管理</view>
+        <view>
+            我的名字：
+        </view>
+        <view>
+            我的地址：
+        </view>
+        <view></view>
+    </view>
+
+    <view class="others"> </view>
+</view>

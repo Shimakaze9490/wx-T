@@ -8,15 +8,20 @@
 }
 
 .section__title {
+    text-align: center;
+    margin: 40rpx auot;
     font-size:60rpx;
 }
 
 .picker {
+    margin-top: 40rpx;
+    margin-bottom: 40rpx;
+    font-size: 40rpx;
     height: 100rpx;
     line-height: 100rpx;
     text-decoration: underline;
     /* border: solid 1px green; */
-    background-color:deepskyblue;
+    background-color:rgb(184, 245, 240);
 }
 
 
@@ -25,6 +30,8 @@
     line-height:50px;
     text-align: center;
     width: 33%;
+    font-size: 80rpx;
+    border: solid 1rpx gray;
 }
 
 .page-section{
@@ -34,20 +41,30 @@
     display: flex;
     width: 100%;
     margin: 0 auto;
-    border: solid 1px red;
+    /* border: solid 1px red; */
 }
 .bc_green {
-    background: green;
+    background: #ccc;
     /* width:100px;  */
     /* height: 50px; */
 }
 .bc_red {
-    background: red;
+    /* background: red; */
     /* width:100px;  */
     /* height: 50px; */
 }
 .bc_blue {
-    background: blue;
+    background: #ccc;
+    /* background: blue; */
     /* width:100px; */
     /* height: 50px; */
+}
+
+.section {
+    font-size: 40rpx;
+}
+
+
+.section__title2 {
+    font-size: 70rpx;
 }

@@ -10,8 +10,8 @@ Page({
         expressCode: ""
     },
     onLoad: function (options) {
-        console.log("options:");
-        console.log(options);
+        // console.log("options:");
+        // console.log(options);
         wx.showLoading({
             title: '加载中',
         })
@@ -45,10 +45,11 @@ Page({
             console.info(self.data.expressOrder);
             resData.LogoSrc = Util.mapLogo(self.data.expressCode);
 
+            console.log("detailList:");
+            console.log(this.data.detailList);
             self.setData({
                 detailList: resData
             })
-
             wx.setStorage({
                 key: resData.LogisticCode,
                 data: resData.Traces.shift()

@@ -18,9 +18,15 @@ Page({
     data: {
         last_order:undefined,
         user_Info:undefined,
-        user_name:"user_name",
-        user_phone:"user_phone",
-        user_address:"user_address",
+        send_Info:{
+            name:"",
+            phone_number:"",
+            address:""
+        },
+        // user_name:"user_name",
+        // user_phone:"user_phone",
+        // user_address:"user_address",
+        // send_name:"send_name"
     },
 
     /**
@@ -83,39 +89,55 @@ Page({
     onShareAppMessage: function () {
 
     },
-    submit_form: function(e) {
+    submit: function() {
         let that = this;
         console.log("提交按钮");
         let config = {
             title : "提交成功",
             successFn: function() {
-                // console.log("执行回调函数!"); 
+                console.log("执行回调函数!");
+
                 //查询记录,获取objectId
-                const query = Bmob.Query("express_Info");
-                const query_user = Bmob.Query("user_Info");
-                query.equalTo("logistics_num","===",that.data.last_order.order);
-                query_user.equalTo("openId","===",that.data.user_Info.openId);
-                query.find().then(res => {
-                    query.get(res[0].objectId).then(res => {
-                        res.set("request_state","1");   //修改订单状态
-                        res.save();
-                    }).catch(err => {
-                        console.log(err);
+                const insert = Bmob.Query("send_Info");
+                insert.set("name","");
+                insert.set("receive_name","");
+                insert.set("phone_number","");
+                insert.set("receive_phone_number","");
+                insert.set("address","");
+                insert.set("receive_address","");
+
+
+                setTimeout(function() {
+                    wx.reLaunch({ //redirectTo
+                        url:"../cart/cart" //提交成功返回到
                     });
+                },500);
+            }
+        };
+        util.alert(config);
+    },
+    submit_form: function(e) {
+        console.log(e.detail);
+        let that = this;
+        let config = {
+            title : "提交成功",
+            successFn : function() {
+                //直接将该订单添加入send_Info数据表中
+                console.log(e.detail.value);
+                const insert = Bmob.Query("send_Info");
+                insert.set("name",e.detail.value.name);
+                insert.set("receive_name",e.detail.value.receive_name);
+                insert.set("phone_number",e.detail.value.phone_number);
+                insert.set("receive_phone_number",e.detail.value.receive_phone_number);
+                insert.set("address",e.detail.value.address);
+                insert.set("receive_address",e.detail.value.receive_address);
+                //openId等信息
+                insert.set("openId",wx.getStorageSync("user_Info").openId);
+                insert.set("request_state","1");
+                insert.save().then(res => {
+                    console.log(res);
                 }).catch(err => {
                     console.log(err);
-                });
-                query_user.find().then(res => {  //存入本次用户信息
-                    query_user.get(res[0].objectId).then(res => {
-                        res.set("name",e.detail.value.name);
-                        res.set("phone_number",e.detail.value.phone_number);
-                        res.set("address",e.detail.value.address);
-                        res.save();
-                    }).catch(err => {
-                        console.log(err);
-                    });
-                }).catch(err => {
-
                 });
                 setTimeout(function() {
                     wx.reLaunch({ //redirectTo
@@ -124,15 +146,6 @@ Page({
                 },500);
             }
         };
-        if( e.detail.value.name == "" || e.detail.value.phone_number == "" || e.detail.value.address == "") {
-            wx.showModal({
-                title: '提示',
-                content: '请填写完整信息',
-                success: function (res) {
-                }
-            });
-        } else {
-            util.alert(config);
-        };
+        util.alert(config);
     }
 })

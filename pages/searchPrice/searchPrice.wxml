@@ -1,6 +1,6 @@
 
 <view class="container">
-    <view class="section__title">快递价格查询:</view>
+    <view class="section__title">快递价格查询</view>
 
     <view class="section">
         <picker mode="region" bindchange="bindRegionChange_start" value="{{region_start}}" custom-item="{{customItem}}">
@@ -21,7 +21,7 @@
     </view>
 
     <view class="section">
-        <view class="section__title">flex-direction: row</view>
+        <view class="section__title2">重量：</view>
         <view class="flex-wrp" style="flex-direction:row;">
             <view class="flex-item bc_blue" bindtap="sub">-</view>
             <view class="flex-item bc_red">{{weight}}</view>

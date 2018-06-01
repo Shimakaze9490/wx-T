@@ -1,66 +1,154 @@
-// pages/cart/cart.js
-Page({
+let app = getApp();
+let util = require("../../utils/util.js");
 
+let Bmob = require("../../utils/Bmob/Bmob-1.4.2.min.js");
+Bmob.initialize("4f72a4304ec8c4312944b3ed80302138", "078a4c3e99f4e72d0bd6369df9943b8c");
+Bmob.User.login('shimakaze', '123456').then(res => {
+    console.log("Bmob登陆成功");
+}).catch(err => {
+    console.log(err)
+});
+
+Page({
   /**
    * 页面的初始数据
    */
   data: {
-  
+    user_Info : undefined,
+    showList: true,
+    mycreate_cards: [], //类型是对象数组
+    myreceive_cards: [],
+    currentTab: 0,
+    isRequesting: true,
+    request_state_c:["未请求","请求中","已接收","已完成"]
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-  
+  onLoad: function(options) {
+    wx.setNavigationBarTitle({ title: "我的订单记录" });
+    this.loadCards();
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
+  // 加载卡片
+  loadCards: function() {
+    let that = this;
+    // 获取用户信息缓存
+    that.setData({
+        user_Info : wx.getStorageSync("user_Info")
+    });
+    const query = Bmob.Query("express_Info");
+    query.equalTo("openId","===",that.data.user_Info.openId);
+    query.find().then(res => {
+        console.log(res);
+        that.setData({
+            mycreate_cards : res,
+            isRequesting : false
+        })
+    }).catch(err => {
+        console.log(err);
+    });
+    // 获取寄出快递记录
+    const send = Bmob.Query("send_Info");
+    send.equalTo("openId","===",that.data.user_Info.openId);
+    send.find().then(res => {
+        console.log("send_Info:")
+        console.log(res);
+        that.setData({
+            myreceive_cards : res,
+            isRequesting : false
+        });
+    }).catch(err => {
+        console.log(err);
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
+  // 处理获取的数据
+  dealSongs: function(songs) {
+    let song1 = [],
+      song2 = [];
+    let that = this;
+    songs.forEach((item, index) => {
+      item.theme = "img/icon_" + item.themeId + ".png";
+      if (item.isQRCode == "true") {
+        item.isQR = "二维码分享";
+      } else {
+        item.isQR = "微信消息";
+      }
+      // 我创建的
+      if (item.source == 0) {
+        song1.push(item);
+        //我收到的
+      } else if (item.source == 1) {
+        song2.push(item);
+      }
+    });
+    // 处理完毕,加载出来
+    let createCards = song1.reverse();
+    let receivedCards = song2.reverse();
+    that.setData({
+      mycreate_cards: createCards,
+      myreceive_cards: receivedCards,
+      isRequesting: false
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
+  // 点击卡片,获取绑定的url,跳转到该卡片
+  cardSkip: function(e) {
+    let url = undefined;
+    let songId = e.target.dataset.songid;
+    let source = e.target.dataset.source;
+    if (songId != null) {
+      //我收到的
+      if (source == "1") {
+        url = "/pages/musicCard/musicCard?id=" + songId + "/1&type=receive";
+      } else {
+        url = "/pages/musicCard/musicCard?id=" + songId + "&type=create";
+      }
+      wx.navigateTo({
+        url: url
+      });
+    }
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
+  // 导航栏切换
+  navChange: function(e) {
+    let that = this;
+    let getId = e.target.dataset.id.toString();
+    if (getId == "mycreate") {
+      that.setData({
+        showList: true
+      });
+    } else {
+      that.setData({
+        showList: false
+      });
+    }
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
+  // 滑动切换tab
+  bindChange: function(e) {
+    let that = this;
+    that.setData({
+      currentTab: e.detail.current
+    });
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
+  // 点击切换tab
+  switchNav: function(e) {
+    let that = this;
+    if (that.data.currentTab === e.target.dataset.current) {
+      return false;
+    } else {
+      that.setData({
+        currentTab: e.target.dataset.current
+      });
+    }
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+  cancel: function() {
+      console.log("cancel！");
+  },
+  send_ex: function() {
+      wx.navigateTo({
+          url:"../send_ex/send_ex"
+      })
   }
-})
+});

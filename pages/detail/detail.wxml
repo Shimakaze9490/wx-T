@@ -15,7 +15,7 @@
     </view>
   </view>
   <view class="detail-box">
-    <view wx:for="{{detailList.Traces}}" class="{{index == 0 ? 'detail-item active' : 'detail-item'}}">
+    <view wx:for="{{detailList.Traces}}" wx:key="{{detailList.index}}" class="{{index == 0 ? 'detail-item active' : 'detail-item'}}">
       <view class="icon" wx:if="{{ index == 0}}">
         <image src="../../images/express_icon.png"></image>
       </view>

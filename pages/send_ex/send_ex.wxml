@@ -1,0 +1,26 @@
+<view class="container">
+    <view class="title">代寄订单详情</view>
+    <!-- form用于提交信息 -->
+    <form bindsubmit="submit_form">
+        <view class="order_Info">
+            <p class="order_title">发件人信息</p>
+            <view class="order_content">
+                <view>姓名：<input class="inputBox" maxlength="20" placeholder="" name="name" value="{{user_Info.name}}" type="text" ></input> </view>
+                <view>电话号码：<input class="inputBox" maxlength="20" placeholder="" name="phone_number" value="{{user_Info.phone_number}}" type="text" ></input></view>
+                <view>详细地址：<input class="inputBox" maxlength="20" placeholder="" name="address" value="{{user_Info.address}}" type="text" ></input></view>
+            </view>
+        </view>
+
+        <view class="user_Info">
+            <p class="user_title">收件人信息</p>
+            <view class="user_content">
+                <view>姓名：<input class="inputBox" maxlength="20" placeholder="" name="receive_name" value="{{}}" type="text" ></input> </view>
+                <view>电话号码：<input class="inputBox" maxlength="20" placeholder="" name="receive_phone_number" value="{{}}" type="text" ></input></view>
+                <view>详细地址：<input class="inputBox" maxlength="20" placeholder="" name="receive_address" value="{{}}" type="text" ></input></view>
+            </view>
+        </view>
+        <button class="submit" formType="submit">提交</button>
+    </form>
+
+    
+</view>

@@ -1,1 +1,33 @@
-/* pages/user/user.wxss */
+.cont {
+
+}
+
+.cont > view {
+    box-sizing: border-box;
+    border: solid 1rpx red;
+    min-height: 260rpx;
+    margin-bottom: 20rpx;
+}
+
+.head {
+    /* min-height: 300rpx; */
+    width: 98%;
+    margin: 0 auto;
+    /* padding-top: 140rpx; */
+    /* padding-left: 60rpx; */
+}
+.head .user_Image {
+    height: 140rpx;
+    width: 140rpx;
+    border-radius: 50%;
+    border: solid 1rpx #fff;
+    
+}
+
+.myInfo {
+
+}
+
+.others {
+
+}

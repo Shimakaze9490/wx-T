@@ -10,11 +10,9 @@ Bmob.User.login('shimakaze', '123456').then(res => {
 
 App({
     onLaunch: function () {
-        // 展示本地存储能力
         var logs = wx.getStorageSync('logs') || []
         logs.unshift(Date.now())
         wx.setStorageSync('logs', logs)
-        // 登录
         wx.login({
             success: res => {
                 // 发送 res.code 到后台换取 openId, sessionKey, unionId
@@ -35,27 +33,37 @@ App({
                             if (this.userInfoReadyCallback) {
                                 this.userInfoReadyCallback(res)
                             };
-
                             let res_log = res;
-                            console.log("openId:"+res_log.userInfo.avatarUrl);
-                            wx.setStorageSync("openId",res_log.userInfo.avatarUrl);  //存入用户新消息
+                            let openId = res_log.userInfo.avatarUrl;
+                            let user_Info = {};  //用户信息对象
+                            user_Info.openId = res_log.userInfo.avatarUrl;
+
                             const query = Bmob.Query("user_Info");
-                            query.equalTo("openId", "===", res_log.userInfo.avatarUrl);
+                            query.equalTo("openId", "===", openId); //条件查询
                             query.find().then(res => {
-                                //用户曾经登陆过  
-                                if (res.length >= 0) {
-                                    console.log(res.length);
+                                //用户曾经登陆过则读取，否则存入新用户
+                                if (res.length > 0) {
+                                    console.log("获取用户信息：");
+                                    query.get(res[0].objectId).then(res => {  //此处异步
+                                        user_Info = res;  //读取用户信息
+                                        wx.setStorageSync("user_Info", user_Info);  //存入用户新消息
+                                    }).catch(err => {
+                                        console.log(err);
+                                    });
                                 } else {
                                     //新用户，存储该用户信息
-                                    const query = Bmob.Query('user_Info');
+                                    // const query = Bmob.Query('user_Info');
                                     query.set("openId", res_log)
                                     console.log("添加新用户");
                                     query.save().then(res => {
-                                        console.log(res)
+                                        console.log(res);
+                                        wx.setStorageSync("user_Info", user_Info);  //存入用户新消息
                                     }).catch(err => {
                                         console.log(err)
                                     })
-                                }
+                                };
+                                // console.log("user_Info:");
+                                // console.log(user_Info);
                             });
                         }
                     })
@@ -66,7 +74,7 @@ App({
     globalData: {
         userInfo: null
     },
-    transfer: function() {
-        
+    transfer: function () {
+
     }
 })
