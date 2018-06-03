@@ -14,9 +14,9 @@
         <view class="user_Info">
             <p class="user_title">用户信息</p>
             <view class="user_content">
-                <view>姓名：<input class="inputBox" maxlength="20" placeholder="" name="name" value="{{user_Info.name}}" type="text" ></input> </view>
-                <view>电话号码：<input class="inputBox" maxlength="20" placeholder="" name="phone_number" value="{{user_Info.phone_number}}" type="text" ></input></view>
-                <view>详细地址：<input class="inputBox" maxlength="20" placeholder="" name="address" value="{{user_Info.address}}" type="text" ></input></view>
+                <view>姓名：<input style="width:200rpx;" class="inputBox" maxlength="20" placeholder="" name="name" value="{{user_Info.name}}" type="text" ></input> </view>
+                <view>电话号码：<input style="width:200rpx;" class="inputBox" maxlength="20" placeholder="" name="phone_number" value="{{user_Info.phone_number}}" type="text" ></input></view>
+                <view>详细地址：<input  class="inputBox" maxlength="20" placeholder="" name="address" value="{{user_Info.address}}" type="text" ></input></view>
             </view>
         </view>
         <button class="submit" formType="submit">提交</button>

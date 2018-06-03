@@ -127,13 +127,13 @@ Page({
 
     searchExpress: function (eorder) {
         let self = this;
-        wx.showModal({
-            title: '提示',
-            content: '暂时没有查到该单号',
-            success: function (res) {
-            }
-        });
-        return ;
+        // wx.showModal({
+        //     title: '提示',
+        //     content: '暂时没有查到该单号',
+        //     success: function (res) {
+        //     }
+        // });
+        // return ;
         if (MockData.env == "mock") {       //mock环境下使用
             let res = MockData.getExpressName(eorder);  //获取快递  名字
             let resData = res.data;

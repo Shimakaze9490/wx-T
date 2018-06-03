@@ -25,6 +25,7 @@
 
 .order_content > view, .user_content > view {
     margin-top: 4rpx;
+    width: 600rpx;
 }
 
 .inputBox {
@@ -33,6 +34,8 @@
 
 .submit {
     border: solid 1px red;
+    width: 300rpx;
+    
 }
 
 view {

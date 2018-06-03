@@ -1,15 +1,17 @@
 {
   "pages": [
-    "pages/user/user",
-    "pages/index/index",
     "pages/searchOrder/searchOrder",
+    "pages/index/index",
+    "pages/user/user",
+    "pages/acceptRequest/acceptRequest",
+    
     "pages/send_ex/send_ex",
     "pages/cart/cart",
     "pages/NewOrder/NewOrder",
     "pages/searchPrice/searchPrice",
     "pages/logs/logs",
-    "pages/detail/detail",
-    "pages/acceptRequest/acceptRequest"
+    "pages/detail/detail"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",
