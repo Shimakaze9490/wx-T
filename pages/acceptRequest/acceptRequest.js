@@ -100,20 +100,31 @@ Page({
 
   // 点击卡片,获取绑定的url,跳转到该卡片
   cardSkip: function(e) {
-    let url = undefined;
-    let songId = e.target.dataset.songid;
-    let source = e.target.dataset.source;
-    if (songId != null) {
-      //我收到的
-      if (source == "1") {
-        url = "/pages/musicCard/musicCard?id=" + songId + "/1&type=receive";
-      } else {
-        url = "/pages/musicCard/musicCard?id=" + songId + "&type=create";
-      }
+        console.log(e.target);
+      let that = this;
+      let parameter = JSON.stringify(e.target.dataset.songid) ;
+    //   console.log(parameter);
+      let url ="../detailCard/detailCard?parameter=" + parameter;  //转换成小写
+      console.log(url);
       wx.navigateTo({
-        url: url
-      });
-    }
+          url : url
+      })
+    
+    //   console.log(e.currentTarget);
+    // let url = undefined;
+    // let songId = e.target.dataset.songid;
+    // let source = e.target.dataset.source;
+    // if (songId != null) {
+    //   //我收到的
+    //   if (source == "1") {
+    //     url = "/pages/musicCard/musicCard?id=" + songId + "/1&type=receive";
+    //   } else {
+    //     url = "/pages/musicCard/musicCard?id=" + songId + "&type=create";
+    //   }
+    //   wx.navigateTo({
+    //     url: url
+    //   });
+    // }
   },
 
   // 导航栏切换

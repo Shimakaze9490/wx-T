@@ -1,4 +1,4 @@
-<view class="container" wx:if="{{!user_Info.isStaff}}">
+<view class="container" wx:if="{{user_Info.isStaff}}">
     <view class="swiper-tab navigator" >
         <view class="swiper-tab-list {{currentTab==0 ? 'navigator_active' : ''}}" data-current="0" bindtap="switchNav">
             <text data-current="0" bindtap="switchNav">代取任务</text>
@@ -8,49 +8,43 @@
         </view>
     </view>
 
+    <button catch:tap="cardSkip" data-songId="data-songId" songId="songId">测试</button>
     <swiper current="{{currentTab}}" class="swiper-box" duration="200"  bindchange="bindChange">
-        <!-- 我接收的订单 -->
         <swiper-item class="swiper_item">
             <view class="reminder" wx:if="{{mycreate_cards.length == 0 && isRequesting == false}}">
                 <text>你还没有查询过快递，赶快去尝试吧！</text>
             </view>
             <view class="cardList" wx:for="{{mycreate_cards}}" wx:key="{{mycreate_cards.index}}">
-                <view class="cards" catch:tap="cardSkip" data-songId="{{item.logistics_num}}">
-                    <view class="left_part">
-                        <view>订单号：{{item.logistics_num}}</view>
-                        <view>创建时间：{{item.createdAt}}</view>
-                        <view>配送位置：{{item.address}}</view>
-                        
-                        
+                <view class="cards" catch:tap="cardSkip" data-songId="{{item}}" >
+                    <view class="left_part" catch:tap="cardSkip" data-songId="{{item}}">
+                        <view catch:tap="cardSkip" data-songId="{{item}}">订单号：{{item.logistics_num}} </view>
+                        <view catch:tap="cardSkip" data-songId="{{item}}">创建时间：{{item.createdAt}}</view>
+                        <view catch:tap="cardSkip" data-songId="{{item}}">配送位置：{{item.address}}</view>
                     </view>
-                    <view class="right_part">
-                        <view>请求状态：</view>
-                        <view>{{request_state_c[item.request_state]}}</view>
-                        <view> <button class="cancel" bindtap="cancel" wx:if="{{item.request_state == 1}}">取消请求</button> </view>
+                    <view class="right_part" catch:tap="cardSkip" data-songId="{{item}}">
+                        <view catch:tap="cardSkip" data-songId="{{item}}">请求状态：</view>
+                        <view catch:tap="cardSkip" data-songId="{{item}}">{{request_state_c[item.request_state]}}</view>
+                        <view catch:tap="cardSkip" data-songId="{{item}}"> <button class="cancel" bindtap="cancel">接受任务</button> </view>
                     </view>
                 </view>
             </view>
         </swiper-item>
 
-        <!-- 我寄出的订单 -->
         <swiper-item class="swiper_item">
             <view class="reminder" wx:if="{{myreceive_cards.length == 0 && isRequesting == false}}">
                 <text>你还没有寄出过快递，赶快去尝试吧！</text>
             </view>
-            <view class="send_ex">
-                <p bindtap="send_ex">我要寄件</p>
-            </view>
             <view class="cardList" wx:for="{{myreceive_cards}}" wx:key="{{myreceive_cards.index}}">
                 <view class="cards" catch:tap="cardSkip" data-songId="{{item.logistics_num}}">
                     <view class="left_part">
-                        <view>{{item.receive_name}}</view>
-                        <view>{{item.phone_number}}</view>
-                        <view>{{item.updatedAt}}</view>
+                        <view>订单号：{{item.logistics_num}}</view>
+                        <view>创建时间：{{item.createdAt}}</view>
+                        <view>配送位置：{{item.address}}</view>
                     </view>
                     <view class="right_part">
                         <view>请求状态：</view>
                         <view>{{request_state_c[item.request_state]}}</view>
-                        <view> <button class="cancel" bindtap="cancel" wx:if="{{item.request_state == 1}}">取消请求</button> </view>
+                        <view> <button class="cancel" bindtap="cancel">接受任务</button> </view>
                     </view>
                 </view>
             </view>
@@ -58,6 +52,7 @@
     </swiper>
 </view>
 
+<!-- 
 <view class="container" wx:if="{{user_Info.isStaff}}">
     <view class="swiper-tab navigator" >
         <view class="swiper-tab-list {{currentTab==0 ? 'navigator_active' : ''}}" data-current="0" bindtap="switchNav">
@@ -69,7 +64,6 @@
     </view>
 
     <swiper current="{{currentTab}}" class="swiper-box" duration="200"  bindchange="bindChange">
-        <!-- 我接收的订单 -->
         <swiper-item class="swiper_item">
             <view class="reminder" wx:if="{{mycreate_cards.length == 0 && isRequesting == false}}">
                 <text>目前还没有代取请求，请稍后再试</text>
@@ -90,7 +84,6 @@
             </view>
         </swiper-item>
 
-        <!-- 我寄出的订单 -->
         <swiper-item class="swiper_item">
             <view class="reminder" wx:if="{{myreceive_cards.length == 0 && isRequesting == false}}">
                 <text>目前还没有代寄请求，请稍后再试</text>
@@ -114,4 +107,4 @@
             </view>
         </swiper-item>
     </swiper>
-</view>
+</view> -->

@@ -84,11 +84,13 @@
     padding-top: 20rpx; */
 }
 
-.left_part,.right_part {
-    width: 50%;
+.left_part {
+    width: 70%;
     padding-left: 16rpx;
 }
+.right_part {
 
+}
 .cancel {
     float: right;
     border: solid 2rpx gray;
