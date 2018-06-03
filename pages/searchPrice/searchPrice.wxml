@@ -1,5 +1,5 @@
 
-<view class="container">
+<view class="container" wx:if="{{!user_Info.isStaff}}">
     <view class="section__title">快递价格查询</view>
 
     <view class="section">
@@ -40,7 +40,9 @@
             <p>总价格：</p>{{price_totle}}元
         </view>
     </view>
-
+</view>
+<view style="margin-top:300rpx;text-align:center;" wx:if="{{user_Info.isStaff}}">
+    请以普通身份使用该功能
 </view>
 
 

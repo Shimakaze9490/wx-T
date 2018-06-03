@@ -61,12 +61,6 @@ Page({
         this.searchExpress(eorder);
     },
 
-    navigateTo: function() {
-        console.log("navigateTo");
-        wx.navigateTo({
-            url:"../acceptRequest/acceptRequest"
-        })
-    },
     deleteHistory: function (e) {
         var self = this;
         try {

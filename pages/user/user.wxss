@@ -1,31 +1,63 @@
-.cont {
-
-}
-
 .cont > view {
     box-sizing: border-box;
-    border: solid 1rpx red;
+    border: solid 4rpx gray;
     min-height: 260rpx;
     margin-bottom: 20rpx;
 }
 
-.head {
+.cont > .head {
+    
+    /* border: solid 1px green; */
     /* min-height: 300rpx; */
     width: 98%;
-    margin: 0 auto;
+    margin: 40rpx auto;
+    margin-left: 80rpx;
+    height: 120rpx;
+    min-height: 120rpx;
+    /* display: flex; */
+    /* align-content: flex-end; */
     /* padding-top: 140rpx; */
     /* padding-left: 60rpx; */
 }
 .head .user_Image {
-    height: 140rpx;
-    width: 140rpx;
+    float: left;
+    height: 120rpx;
+    width: 120rpx;
+    margin-right: 40rpx;
     border-radius: 50%;
     border: solid 1rpx #fff;
     
 }
+.cont > .head  p {
+    height: 120rpx;
+    line-height: 120rpx;
+    display: inline-block;
+    float: left;
+}
 
-.myInfo {
+.myInfo_title {
+    font-size: 40rpx;
+}
 
+.name_p {
+    height: 60rpx;
+    line-height:60rpx;
+}
+
+.name {
+    display: inline-block;
+    border: solid 1px gray;
+    width: 190rpx;
+    height: 60rpx;
+    overflow: visible;
+}
+.address {
+    border: solid 1px gray;
+    width: 160rpx;
+}
+
+.content {
+    margin-top: 6rpx;
 }
 
 .others {

@@ -28,43 +28,74 @@ App({
                         success: res => {
                             // 可以将 res 发送给后台解码出 unionId
                             this.globalData.userInfo = res.userInfo
+                            // console.log("userInfo:");
+                            // console.log(res.userInfo);
                             // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
                             // 所以此处加入 callback 以防止这种情况
                             if (this.userInfoReadyCallback) {
                                 this.userInfoReadyCallback(res)
                             };
-                            let res_log = res;
+                            let res_log = res;  //api返回
                             let openId = res_log.userInfo.avatarUrl;
                             let user_Info = {};  //用户信息对象
-                            user_Info.openId = res_log.userInfo.avatarUrl;
-
-                            const query = Bmob.Query("user_Info");
-                            query.equalTo("openId", "===", openId); //条件查询
-                            query.find().then(res => {
-                                //用户曾经登陆过则读取，否则存入新用户
-                                if (res.length > 0) {
-                                    console.log("获取用户信息：");
-                                    query.get(res[0].objectId).then(res => {  //此处异步
+                            
+                            // 判断是否是“小件员”角色
+                            const query_staff = Bmob.Query("staff_Info");
+                            query_staff.equalTo("openId","===",openId);
+                            query_staff.find().then(res => {
+                                if(res.length > 0) {
+                                    
+                                    query_staff.get(res[0].objectId).then(res => {  //此处异步
                                         user_Info = res;  //读取用户信息
+                                        user_Info.isStaff = true ;
+                                        // user_Info.openId = res_log.userInfo.avatarUrl;
+                                        user_Info.nickName = res_log.userInfo.nickName;
+                                        user_Info.city = res_log.userInfo.city;
+                                        console.log(user_Info);
                                         wx.setStorageSync("user_Info", user_Info);  //存入用户新消息
                                     }).catch(err => {
                                         console.log(err);
                                     });
                                 } else {
-                                    //新用户，存储该用户信息
-                                    // const query = Bmob.Query('user_Info');
-                                    query.set("openId", res_log)
-                                    console.log("添加新用户");
-                                    query.save().then(res => {
-                                        console.log(res);
-                                        wx.setStorageSync("user_Info", user_Info);  //存入用户新消息
-                                    }).catch(err => {
-                                        console.log(err)
-                                    })
-                                };
-                                // console.log("user_Info:");
-                                // console.log(user_Info);
-                            });
+                                    const query = Bmob.Query("user_Info");
+                                    query.equalTo("openId", "===", openId); //条件查询
+                                    query.find().then(res => {
+                                        //用户曾经登陆过则读取，否则存入新用户
+                                        if (res.length > 0) {
+                                            console.log("获取用户信息：");
+                                            query.get(res[0].objectId).then(res => {  //此处异步
+                                                user_Info = res;  //读取用户信息
+                                                // user_Info.openId = res_log.userInfo.avatarUrl;
+                                                user_Info.isStaff = false ;
+                                                user_Info.nickName = res_log.userInfo.nickName;
+                                                user_Info.city = res_log.userInfo.city;
+                                                console.log(user_Info);
+                                                wx.setStorageSync("user_Info", user_Info);  //存入用户新消息
+                                            }).catch(err => {
+                                                console.log(err);
+                                            });
+                                        } else {
+                                            //新用户，存储该用户信息
+                                            // const query = Bmob.Query('user_Info');
+                                            query.set("openId", res_log)
+                                            console.log("添加新用户");
+                                            query.save().then(res => {
+                                                console.log(res);
+                                                // user_Info.openId = res_log.userInfo.avatarUrl;
+                                                user_Info.nickName = res_log.userInfo.nickName;
+                                                user_Info.city = res_log.userInfo.city;
+                                                wx.setStorageSync("user_Info", user_Info);  //存入用户新消息
+                                            }).catch(err => {
+                                                console.log(err)
+                                            })
+                                        };
+                                    });
+                                }
+                            }).catch(err => {
+                                console.log(err);
+                            })
+
+                            
                         }
                     })
                 }

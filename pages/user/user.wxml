@@ -1,18 +1,44 @@
 <view class="cont">
-    <view class="head">
+    <view class="head" style="border:none">
         <image class="user_Image" src="{{user_Info.openId}}"></image>
-        <p>{{}}</p>
+        <view>
+            <p>{{user_Info.nickName}}</p>
+        </view>
     </view>
-    <view class="myInfo">
-        <view class="">个人信息管理</view>
-        <view>
-            我的名字：
-        </view>
-        <view>
-            我的地址：
-        </view>
-        <view></view>
+    <view class="myInfo" style="padding-left:40rpx;">
+        <form>
+            <view class="myInfo_title">个人信息管理</view>
+            <view class="content">
+                我的名字：
+                <p class="name_p" bindtap="name_j" wx:if="{{!name_j}}">
+                    {{user_Info.name}}<text style="font-size:30rpx;">(点击修改)</text>
+                </p>
+                <input wx:if="{{name_j}}" class="name" maxlength="20" placeholder="" name="name" bindinput="input_name" type="text" ></input>
+                <text wx:if="{{name_j}}" bindtap="save_name">点击保存</text>
+            </view>
+            <view class="content">
+                电话号码：
+                <p class="name_p" bindtap="phone_j" wx:if="{{!phone_j}}">
+                    {{user_Info.phone_number}}<text style="font-size:30rpx;">(点击修改)</text>
+                </p>
+                <input wx:if="{{phone_j}}" class="name" maxlength="20" placeholder="" name="phone_number" bindinput="input_phone_number" type="text" ></input>
+                <text wx:if="{{phone_j}}" bindtap="save_phone_number">点击保存</text>
+            </view>
+            <view class="content">
+                详细地址：
+                <p class="name_p" bindtap="address_j" wx:if="{{!address_j}}">
+                    {{user_Info.address}}<text style="font-size:30rpx;">(点击修改)</text>
+                </p>
+                <input style="width:300rpx;" wx:if="{{address_j}}" class="name" maxlength="20" placeholder="" name="address" bindinput="input_address" type="text" ></input>
+                <text wx:if="{{address_j}}" bindtap="save_address">点击保存</text>
+            </view>
+        </form>
     </view>
 
-    <view class="others"> </view>
+    <view class="msg" style="padding-left:40rpx;">
+        <view class="content">留言中心</view>
+        <view class="content">我要投诉</view>
+        <view class="content">优惠券</view>
+        <view class="content">关联小程序</view>
+    </view>
 </view>

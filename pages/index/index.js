@@ -117,26 +117,26 @@ Page({
     wx.navigateTo({
       url: "../searchOrder/searchOrder"
     })
+  },
+  getUserInfo: function(e) {
+    console.log(e)
+    app.globalData.userInfo = e.detail.userInfo
+    this.setData({
+      userInfo: e.detail.userInfo,
+      hasUserInfo: true
+    });
+    let that = this;
+    wx.login({
+      success: function(res) {
+        if (res.code) {
+          // 发起网络请求
+          that.getUserInfo(res.code, e);
+        } else {
+          util.loadingToast(true, {
+            title: res.errMsg
+          });
+        }
+      }
+    })
   }
-//   getUserInfo: function(e) {
-//     console.log(e)
-//     app.globalData.userInfo = e.detail.userInfo
-//     this.setData({
-//       userInfo: e.detail.userInfo,
-//       hasUserInfo: true
-//     });
-//     let that = this;
-//     wx.login({
-//       success: function(res) {
-//         if (res.code) {
-//           // 发起网络请求
-//           that.getUserInfo(res.code, options);
-//         } else {
-//           util.loadingToast(true, {
-//             title: res.errMsg
-//           });
-//         }
-//       }
-//     })
-//   }
 })

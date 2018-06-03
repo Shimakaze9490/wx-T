@@ -33,6 +33,6 @@
 </view>
 
 <view style="margin-top:300rpx;text-align:center;" wx:if="{{user_Info.isStaff}}">
-    <button style="width:500rpx;border:solid 1px gray" bindtap="navigateTo">点击进入请求页面</button>
+    <button style="width:500rpx;border:solid 1px gray">点击进入请求页面</button>
 
 </view>
