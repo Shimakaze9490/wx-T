@@ -17,9 +17,11 @@
             <view class="cardList" wx:for="{{mycreate_cards}}" wx:key="{{mycreate_cards.index}}">
                 <view class="cards" catch:tap="cardSkip" data-songId="{{item.logistics_num}}">
                     <view class="left_part">
-                        <view>{{item.logistics_com_name}}</view>
-                        <view>{{item.logistics_num}}</view>
-                        <view>{{item.createdAt}}</view>
+                        <view>订单号：{{item.logistics_num}}</view>
+                        <view>创建时间：{{item.createdAt}}</view>
+                        <view>配送位置：{{item.address}}</view>
+                        
+                        
                     </view>
                     <view class="right_part">
                         <view>请求状态：</view>

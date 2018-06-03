@@ -43,26 +43,15 @@ Page({
                 rtList.push(element);
             }
         });
-        console.log(rtList);
+        // console.log(rtList);
         this.setData({
             mycreate_cards : rtList
         });
     }).catch(err => {
         console.log(err);
     });
-    // query.equalTo("openId","===",that.data.user_Info.openId);
-    // query.find().then(res => {
-    //     console.log(res);
-    //     that.setData({
-    //         mycreate_cards : res,
-    //         isRequesting : false
-    //     })
-    // }).catch(err => {
-    //     console.log(err);
-    // });
-    // 获取寄出快递记录
+
     const send = Bmob.Query("send_Info");
-    // send.equalTo("openId","===",that.data.user_Info.openId);
     send.find().then(res => {
         let stList = [];
         res.forEach(element => {

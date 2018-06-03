@@ -46,6 +46,12 @@ Page({
       }
     }
   },
+  toIndex: function() {
+      console.log("toIndex!");
+    wx.switchTab({
+        url: "../searchOrder/searchOrder"
+    });
+  },
   userLogin: function(options) {
     let that = this;
     wx.login({

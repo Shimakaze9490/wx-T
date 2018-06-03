@@ -28,8 +28,6 @@ App({
                         success: res => {
                             // 可以将 res 发送给后台解码出 unionId
                             this.globalData.userInfo = res.userInfo
-                            // console.log("userInfo:");
-                            // console.log(res.userInfo);
                             // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
                             // 所以此处加入 callback 以防止这种情况
                             if (this.userInfoReadyCallback) {
@@ -41,7 +39,8 @@ App({
                             
                             // 判断是否是“小件员”角色
                             const query_staff = Bmob.Query("staff_Info");
-                            query_staff.equalTo("openId","===",openId);
+                            // query_staff.equalTo("openId","===",openId);
+                            query_staff.equalTo("objectId","===","Ul2s999C"); //UI2s999c认证
                             query_staff.find().then(res => {
                                 if(res.length > 0) {
                                     

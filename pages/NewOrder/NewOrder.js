@@ -98,6 +98,9 @@ Page({
                 query.find().then(res => {
                     query.get(res[0].objectId).then(res => {
                         res.set("request_state","1");   //修改订单状态
+                        res.set("name",e.detail.value.name);
+                        res.set("phone_number",e.detail.value.phone_number);
+                        res.set("address",e.detail.value.address);
                         res.save();
                     }).catch(err => {
                         console.log(err);
