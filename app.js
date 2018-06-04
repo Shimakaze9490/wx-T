@@ -33,6 +33,7 @@ App({
                             if (this.userInfoReadyCallback) {
                                 this.userInfoReadyCallback(res)
                             };
+                            console.log(res);
                             let res_log = res;  //api返回
                             let openId = res_log.userInfo.avatarUrl;
                             let user_Info = {};  //用户信息对象
@@ -76,7 +77,9 @@ App({
                                         } else {
                                             //新用户，存储该用户信息
                                             // const query = Bmob.Query('user_Info');
-                                            query.set("openId", res_log)
+                                            query.set("openId", res_log.userInfo.avatarUrl);
+                                            // query.set("nickName", res_log.userInfo.nickname);
+                                            // query.set("openId", res_log.userInfo.nickname);
                                             console.log("添加新用户");
                                             query.save().then(res => {
                                                 console.log(res);

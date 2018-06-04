@@ -16,23 +16,39 @@ Page({
      * 页面的初始数据
      */
     data: {
-        last_order:undefined,
-        user_Info:undefined,
-        user_name:"user_name",
-        user_phone:"user_phone",
-        user_address:"user_address",
+        last_order: undefined,  //放弃用这个
+        user_Info: undefined,
+        user_name: undefined,
+        user_phone: undefined,
+        user_address: undefined,
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        let last_order = wx.getStorageSync("last_order");
-        let user_Info = {};
         this.setData({
-            last_order : last_order,
             user_Info : wx.getStorageSync("user_Info")
         });
+        if(options.length > 0) {
+            console.log(options.objectid);
+            const query = Bmob.Query("express_Info");
+            query.get(options.objectid).then(res => {
+                console.log(res);
+                this.setData({
+                    last_order : res[0]
+                })
+            }).catch(err => {
+                console.log(err);
+            });
+        } else {
+            let last_order = wx.getStorageSync("last_order");
+            let user_Info = {};
+            this.setData({
+                last_order : last_order
+            });
+        }
+        
     },
 
     /**

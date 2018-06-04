@@ -228,7 +228,7 @@ Page({
                                 "order": LogisticCode,//订单号logistic_num
                                 "name": ShipperName,//快递公司名称
                                 "code": ShipperCode,//快递公司编号logistic_com_num
-                                "openId": wx.getStorageSync("openId"),
+                                "openId": wx.getStorageSync("user_Info").openId,
                                 "logistic_state": "2",//物流状态，2表示在路上
                                 "staff_openId": "",//小件员id
                                 "traces": traces,

@@ -126,7 +126,7 @@ Page({
         }, 100);
     },
     substitution: function() {
-      console.log("substitution!");
+    //   console.log("substitution!");
       wx.navigateTo({
         url: "../NewOrder/NewOrder"
       })

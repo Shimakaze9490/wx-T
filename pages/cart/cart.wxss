@@ -95,6 +95,10 @@
 .left_part {
     width: 70%;
 }
+.left_part > view {
+    margin-top: 12rpx;
+    padding-left: 10rpx;
+}
 .right_part {
     width: 30%;
     border: solid 1px gray;
@@ -112,13 +116,17 @@
 }
 
 .send_ex {
-    padding: 6rpx;
+    /* border: solid 1px red; */
+    box-sizing: border-box;
+    /* padding: 6rpx; */
+    padding-top: 30rpx;
     font-size: 38rpx;
-    height: 70rpx;
+    height: 120rpx;
     padding-right: 30rpx;
 }
 
 .send_ex p{
+
     border: solid 2rpx gray;
     border-radius: 14rpx;
     float: right;

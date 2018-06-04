@@ -24,7 +24,8 @@
                     <view class="right_part">
                         <view>请求状态：</view>
                         <view>{{request_state_c[item.request_state]}}</view>
-                        <view> <button class="cancel" bindtap="cancel" wx:if="{{item.request_state == 1 && btn_dis}}" data-objectId="{{item.objectId}}">取消请求</button> </view>
+                        <view> <button class="cancel" bindtap="cancel" wx:if="{{item.request_state == 1}}" data-objectId="{{item.objectId}}">取消请求</button> </view>
+                        <view> <button class="cancel" bindtap="request" wx:if="{{item.request_state == 0}}" data-objectId="{{item.objectId}}">发出请求</button> </view>
                     </view>
                 </view>
             </view>
@@ -32,11 +33,11 @@
 
         <!-- 我寄出的订单 -->
         <swiper-item class="swiper_item">
-            <view class="reminder" wx:if="{{myreceive_cards.length == 0 && isRequesting == false}}">
-                <text>你还没有寄出过快递，赶快去尝试吧！</text>
-            </view>
             <view class="send_ex">
                 <p bindtap="send_ex">我要寄件</p>
+            </view>
+            <view class="reminder" wx:if="{{myreceive_cards.length == 0 && isRequesting == false}}">
+                <text>你还没有寄出过快递，赶快去尝试吧！</text>
             </view>
             <view class="cardList" wx:for="{{myreceive_cards}}" wx:key="{{myreceive_cards.index}}">
                 <view class="cards" catch:tap="cardSkip" data-songId="{{item.logistics_num}}">
@@ -56,57 +57,3 @@
         </swiper-item>
     </swiper>
 </view>
-<!-- 
-<view class="container" wx:if="{{user_Info.isStaff}}">
-    <view class="swiper-tab navigator" >
-        <view class="swiper-tab-list {{currentTab==0 ? 'navigator_active' : ''}}" data-current="0" bindtap="switchNav">
-            <text data-current="0" bindtap="switchNav">代取请求</text>
-        </view>
-        <view class="swiper-tab-list {{currentTab==1 ? 'navigator_active' : ''}}" data-current="1" bindtap="switchNav">
-            <text data-current="1" bindtap="switchNav">代寄请求</text>
-        </view>
-    </view>
-    <swiper current="{{currentTab}}" class="swiper-box" duration="200"  bindchange="bindChange">
-        <swiper-item class="swiper_item">
-            <view class="reminder" wx:if="{{mycreate_cards.length == 0 && isRequesting == false}}">
-                <text>目前还没有代取请求，请稍后再试</text>
-            </view>
-            <view class="cardList" wx:for="{{mycreate_cards}}" wx:key="{{mycreate_cards.index}}">
-                <view class="cards" catch:tap="cardSkip" data-songId="{{item.logistics_num}}" data-objectid="{{item.objectId}}">
-                    <view class="left_part">
-                        <view>{{item.logistics_com_name}}</view>
-                        <view>{{item.logistics_num}}</view>
-                        <view>{{item.createdAt}}</view>
-                    </view>
-                    <view class="right_part">
-                        <view>请求状态：</view>
-                        <view>{{request_state_c[item.request_state]}}</view>
-                        <view bindtap="cancel" data-objectid="{{item.objectId}}"> <button class="cancel" bindtap="cancel" wx:if="{{item.request_state == 1}}" data-objectid="{{item.objectId}}">取消请求</button> </view>
-                    </view>
-                </view>
-            </view>
-        </swiper-item>
-        <swiper-item class="swiper_item">
-            <view class="reminder" wx:if="{{myreceive_cards.length == 0 && isRequesting == false}}">
-                <text>目前还没有代寄请求，请稍后再试</text>
-            </view>
-            <view class="send_ex">
-                <p bindtap="send_ex">我要寄件</p>
-            </view>
-            <view class="cardList" wx:for="{{myreceive_cards}}" wx:key="{{myreceive_cards.index}}">
-                <view class="cards" catch:tap="cardSkip" data-songId="{{item.logistics_num}}">
-                    <view class="left_part">
-                        <view>{{item.receive_name}}</view>
-                        <view>{{item.phone_number}}</view>
-                        <view>{{item.updatedAt}}</view>
-                    </view>
-                    <view class="right_part">
-                        <view>请求状态：</view>
-                        <view>{{request_state_c[item.request_state]}}</view>
-                        <view catchtap="cancel" data-objectid="{{item.objectId}}"> <button class="cancel" catchtap="cancel" wx:if="{{item.request_state == 1}}" data-objectid="{{item.objectId}}">取消请求</button> </view>
-                    </view>
-                </view>
-            </view>
-        </swiper-item>
-    </swiper>
-</view> -->
