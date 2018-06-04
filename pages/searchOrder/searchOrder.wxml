@@ -11,7 +11,7 @@
         <image src="../../images/scanning.png" bindtap="scanCode"></image>
       </view>
       <view class="search-button">
-        <button form-type="submit">查询</button>
+        <button form-type="submit">马上查询</button>
       </view>
     </form>
   </view>
@@ -29,6 +29,7 @@
         <image src="../../images/delete.png"></image>
       </view>
     </view>
+    <view wx:if="{{historySearch.length == 0}}">暂无查询记录</view>
   </view>
 </view>
 

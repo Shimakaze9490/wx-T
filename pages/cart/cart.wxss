@@ -9,9 +9,11 @@
     justify-content: center;
     width: 100%;
     margin: 0 auto;
+    margin-bottom: 10rpx;
     box-sizing: border-box;
     font-size: 32rpx;
     letter-spacing: 0;
+    border-bottom: solid 1rpx gray;
 }
 
 .navigator>view {
@@ -38,6 +40,7 @@
 /* 主体内容 */
 
 .swiper-box {
+    /* border-top:solid 1rpx grap;  */
     box-sizing: border-box;
     display: block;
     height: calc(100vh - 80rpx);
@@ -63,10 +66,12 @@
 }
 
 .cardList {
-    border: solid 1rpx blue;
-    width: 750rpx;
-    margin-top: 8rpx;
+    border: solid 2rpx gray;
+    width: 730rpx;
+    margin: 0 auto;
+    margin-top: 10rpx;
     min-height:120rpx;
+
     /* padding-left: 30rpx;
     padding-right: 30rpx;
     padding-top: 30rpx; */
@@ -77,7 +82,7 @@
 .cardList .cards {
     box-sizing: border-box;
     min-height: 120rpx;
-    border-bottom: solid 1rpx rgba(179, 179, 177, 0.24);
+    /* border-bottom: solid 1rpx rgba(179, 179, 177, 0.24); */
     display: flex;
     /* padding-left: 20rpx;
     padding-right: 20rpx;
@@ -85,10 +90,16 @@
 }
 
 .left_part,.right_part {
-    width: 50%;
     padding-left: 16rpx;
 }
-
+.left_part {
+    width: 70%;
+}
+.right_part {
+    width: 30%;
+    border: solid 1px gray;
+    margin: 10rpx;
+}
 .cancel {
     float: right;
     border: solid 2rpx gray;
@@ -101,6 +112,7 @@
 }
 
 .send_ex {
+    padding: 6rpx;
     font-size: 38rpx;
     height: 70rpx;
     padding-right: 30rpx;

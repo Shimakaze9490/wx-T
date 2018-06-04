@@ -12,7 +12,7 @@
     <swiper current="{{currentTab}}" class="swiper-box" duration="200"  bindchange="bindChange">
         <swiper-item class="swiper_item">
             <view class="reminder" wx:if="{{mycreate_cards.length == 0 && isRequesting == false}}">
-                <text>你还没有查询过快递，赶快去尝试吧！</text>
+                <text>当前还没有代取任务</text>
             </view>
             <view class="cardList" wx:for="{{mycreate_cards}}" wx:key="{{mycreate_cards.index}}">
                 <view class="cards" catch:tap="cardSkip" data-songId="{{item}}" >

@@ -143,8 +143,48 @@ Page({
       });
     }
   },
-  cancel: function() {
-      console.log("cancel！");
+  cancel: function(e) {
+    //   console.log("cancel！");
+    // console.log(e.target);
+    let that = this;
+    console.log(e.currentTarget.dataset);
+      let config = {
+        title : "确定取消？",
+        content : "",
+        cancelText : "返回",
+        showCancel : true,
+        successFn : function() {
+            console.log("取消成功！");
+            const query = Bmob.Query("express_Info");
+            query.get(e.currentTarget.dataset.objectid).then(res => {
+                res.set("request_state","0");
+                res.save();
+            }).catch(err => {
+                console.log(err);
+            });
+            query.equalTo("openId","===",that.data.user_Info.openId);
+            query.find().then(res => {
+                // console.log(res);
+                that.setData({
+                    mycreate_cards : [],
+                    isRequesting : false
+                },() => {
+                    console.log(res);
+                    that.setData({
+                        mycreate_cards : res
+                    });
+                })
+            }).catch(err => {
+                console.log(err);
+            });
+            // that.loadCards();
+        },
+        failFn: function() {
+            console.log("fail");
+        }
+      };
+      
+      util.dialog(config);
   },
   send_ex: function() {
       wx.navigateTo({

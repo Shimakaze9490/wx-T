@@ -28,3 +28,11 @@
 .usermotto {
   margin-top: 200px;
 }
+
+.toIndex {
+    margin-top: 140rpx;
+    border: solid 3rpx gray;
+    padding: 20rpx;
+    border-radius: 10rpx;
+    font-size: 40rpx;
+}

@@ -19,18 +19,17 @@
     font-size: 40rpx;
     height: 100rpx;
     line-height: 100rpx;
-    text-decoration: underline;
-    /* border: solid 1px green; */
-    background-color:rgb(184, 245, 240);
+    /* text-decoration: underline; */
+    background-color:rgb(184, 245, 197);
 }
 
 
 
 .flex-item {
-    line-height:50px;
+    line-height:40px;
     text-align: center;
     width: 33%;
-    font-size: 80rpx;
+    font-size: 60rpx;
     border: solid 1rpx gray;
 }
 
@@ -62,9 +61,18 @@
 
 .section {
     font-size: 40rpx;
+    /* padding-left: 50rpx; */
 }
 
-
+.section view {
+    /* border: solid 1px gray; */
+}
+.price {
+    font-size: 50rpx;
+    padding-left: 50rpx;
+    margin-top: 20rpx;
+    border: solid 1px gray;
+}
 .section__title2 {
-    font-size: 70rpx;
+    font-size: 60rpx;
 }

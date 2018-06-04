@@ -40,7 +40,7 @@ App({
                             // 判断是否是“小件员”角色
                             const query_staff = Bmob.Query("staff_Info");
                             // query_staff.equalTo("openId","===",openId);
-                            query_staff.equalTo("objectId","===","Ul2s999C"); //UI2s999c认证
+                            query_staff.equalTo("objectId","===","aaUl2s999C"); //UI2s999c认证
                             query_staff.find().then(res => {
                                 if(res.length > 0) {
                                     
