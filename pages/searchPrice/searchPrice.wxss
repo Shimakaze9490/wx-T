@@ -8,7 +8,7 @@
 }
 
 .section__title {
-    text-align: center;
+    text-align: right;
     margin: 40rpx auot;
     font-size:60rpx;
 }
@@ -20,7 +20,9 @@
     height: 100rpx;
     line-height: 100rpx;
     /* text-decoration: underline; */
-    background-color:rgb(184, 245, 197);
+    /* background-color:rgb(184, 245, 197); */
+    /* background-color:#4FBDFA; */
+    /* color: #fff; */
 }
 
 
@@ -30,7 +32,7 @@
     text-align: center;
     width: 33%;
     font-size: 60rpx;
-    border: solid 1rpx gray;
+    border: solid 1rpx #4FBDFA;
 }
 
 .page-section{
@@ -43,7 +45,7 @@
     /* border: solid 1px red; */
 }
 .bc_green {
-    background: #ccc;
+    background:  #ccc;
     /* width:100px;  */
     /* height: 50px; */
 }
@@ -69,10 +71,44 @@
 }
 .price {
     font-size: 50rpx;
-    padding-left: 50rpx;
-    margin-top: 20rpx;
+    /* padding-left: -80rpx; */
+    /* margin-top: 20rpx; */
     border: solid 1px gray;
 }
+
+.price view {
+    /* border-bottom: solid 1px gray; */
+    /* text-align: center; */
+    /* text-indent: 20rpx; */
+}
+
 .section__title2 {
     font-size: 60rpx;
 }
+
+/*分割线*/
+
+.explain-line {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    background-color: #f8f8f8;
+    position: relative;
+    margin-top: 10rpx;
+    display: flex;
+    align-items: center;
+  }
+  
+  .explain-block {
+    width: 5px;
+    height: 30px;
+    background-color: #ef6262;
+    display: inline-block;
+  }
+  
+  .explain-text {
+    display: inline-block;
+    color: #343434;
+    margin-left: 5%;
+    font-size: 50rpx;
+  }

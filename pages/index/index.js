@@ -4,7 +4,7 @@ const app = getApp()
 Page({
   data: {
     motto: '欢迎来到“校园快递通”',
-    userInfo: {},
+    userInfo: undefined,
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
@@ -81,6 +81,8 @@ Page({
           userInfo : res.userInfo,
           isLoaded: true
         });
+        console.log("同意");
+        wx.setStorageSync("user_Info", res.userInfo);  //存入用户新消息
         util.loadingToast(false);
       },
       // 获取失败或者用户拒绝
@@ -125,7 +127,9 @@ Page({
     })
   },
   getUserInfo: function(e) {
-    console.log(e)
+    console.log("同意");
+    wx.setStorageSync("user_Info", e.userInfo);  //存入用户新消息
+    // console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,

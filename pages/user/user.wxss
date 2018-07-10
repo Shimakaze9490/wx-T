@@ -1,8 +1,11 @@
+.cont {
+    border-top: solid 1rpx gray;
+}
 .cont > view {
     box-sizing: border-box;
     border: solid 4rpx gray;
     min-height: 260rpx;
-    margin-bottom: 20rpx;
+    margin-bottom: 40rpx;
 }
 
 .cont > .head {
@@ -37,9 +40,12 @@
 
 .myInfo_title {
     font-size: 40rpx;
+    padding-left: 20rpx;
 }
 
 .name_p {
+    /* border: solid 1px green; */
+    /* margin-left: 50rpx; */
     height: 60rpx;
     line-height:60rpx;
 }
@@ -57,7 +63,19 @@
 }
 
 .content {
-    margin-top: 6rpx;
+    margin-top: 10rpx;
+    padding-left: 20rpx;
+}
+.content_o p {
+    border: solid 1rpx #4FBDFA;
+    background-color: #4FBDFA;
+    border-radius: 10rpx;
+    color: #fff;
+    margin-top: 10rpx;
+    display: block;
+    width: 260rpx;
+    padding: 6rpx;
+    text-align: center;
 }
 
 .others {

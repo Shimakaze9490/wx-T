@@ -44,6 +44,23 @@ Page({
             address_j : true
         });
     },
+    save_phone_number: function() {
+        let that = this;
+        that.setData({
+            phone_j :false,
+            "user_Info.phone_number" : this.data.phone_number
+        },() => {
+            //更新本地和数据库的用户信息
+            wx.setStorageSync("user_Info",that.data.user_Info);
+            const query = Bmob.Query("user_Info");
+            query.get(that.data.user_Info.objectId).then(res => {
+                res.set("phone_number",that.data.user_Info.phone_number);
+                res.save();
+            }).catch(err => {
+                console.log(err);
+            });
+        });
+    },
     save_name: function() {
         let that = this;
         that.setData({
@@ -95,23 +112,7 @@ Page({
             address : e.detail.value
         });
     },
-    save_phone_number: function() {
-        let that = this;
-        that.setData({
-            phone_j :false,
-            "user_Info.phone_number" : this.data.phone_number
-        },() => {
-            //更新本地和数据库的用户信息
-            wx.setStorageSync("user_Info",that.data.user_Info);
-            const query = Bmob.Query("user_Info");
-            query.get(that.data.user_Info.objectId).then(res => {
-                res.set("phone_number",that.data.user_Info.phone_number);
-                res.save();
-            }).catch(err => {
-                console.log(err);
-            });
-        });
-    },
+    
     /**
      * 生命周期函数--监听页面加载
      */

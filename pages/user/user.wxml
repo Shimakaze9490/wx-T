@@ -5,10 +5,11 @@
             <p>{{user_Info.nickName}}</p>
         </view>
     </view>
-    <view class="myInfo" style="padding-left:40rpx;">
+    <view class="myInfo" style="padding-left:0rpx;border:solid 2rpx #4FBDFA">
         <form>
             <view class="myInfo_title">个人信息管理</view>
             <view class="content">
+                <image style="width:50rpx;height:50rpx;float:left;" src="../../images/图标/user.png"/>
                 我的名字：
                 <p class="name_p" bindtap="name_j" wx:if="{{!name_j}}">
                     {{user_Info.name}}<text style="font-size:30rpx;">(点击修改)</text>
@@ -17,6 +18,7 @@
                 <text wx:if="{{name_j}}" bindtap="save_name">点击保存</text>
             </view>
             <view class="content">
+                <image style="width:50rpx;height:50rpx;float:left;" src="../../images/图标/phone.png"/>
                 电话号码：
                 <p class="name_p" bindtap="phone_j" wx:if="{{!phone_j}}">
                     {{user_Info.phone_number}}<text style="font-size:30rpx;">(点击修改)</text>
@@ -25,6 +27,7 @@
                 <text wx:if="{{phone_j}}" bindtap="save_phone_number">点击保存</text>
             </view>
             <view class="content">
+                <image style="width:50rpx;height:50rpx;float:left;" src="../../images/图标/address.png"/>
                 详细地址：
                 <p class="name_p" bindtap="address_j" wx:if="{{!address_j}}">
                     {{user_Info.address}}<text style="font-size:30rpx;">(点击修改)</text>
@@ -36,9 +39,17 @@
     </view>
 
     <view class="msg" style="padding-left:40rpx;">
-        <view class="content">留言中心</view>
-        <view class="content">我要投诉</view>
-        <view class="content">优惠券</view>
-        <view class="content">关联小程序</view>
+        <view class="content_o">
+            <p>留言中心</p>
+        </view>
+        <view class="content_o">
+            <p>我要投诉</p>
+        </view>
+        <view class="content_o">
+            <p>优惠券</p>
+        </view>
+        <view class="content_o">
+            <p>取消授权</p>
+        </view>
     </view>
 </view>

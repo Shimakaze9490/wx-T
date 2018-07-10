@@ -222,6 +222,7 @@ Page({
                             });
 
                             let traces = MockData.getExpressDetail().data.Traces;
+                            
                             console.dir(traces);
                             //订单详细信息
                             newList.push({
@@ -236,16 +237,14 @@ Page({
                             })
                             console.log("last_order:");
                             //   console.log(newList);
-
                             
                             let last_order = newList[newList.length - 1];
                             console.log(last_order);
                             wx.setStorageSync("last_order",last_order);
-                            //订单信息存入数据库,是否需要重新引入bmob？
+                            //订单信息存入数据库,需要重新引入bmob
                             const query = Bmob.Query("express_Info");
                             query.equalTo("logistics_num", "===", last_order.order);  //防止重复插入
                             query.find().then(res => {
-                                console.log("订单查询结果：");
                                 // console.log(res.length);
                                 if(res.length === 0) {
                                     const insert = Bmob.Query("express_Info");

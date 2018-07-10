@@ -12,11 +12,11 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        console.log(options.parameter);
         let that = this;
         that.setData({
-            parameter : options.parameter
-        })
+            parameter : JSON.parse(options.parameter)
+        });
+        console.log(this.data.parameter);
     },
 
     /**

@@ -28,7 +28,7 @@ Page({
     this.loadCards();
   },
 
-  // 加载卡片
+  // 加载列表
   loadCards: function() {
     let that = this;
     // 获取用户信息缓存
@@ -50,7 +50,6 @@ Page({
     }).catch(err => {
         console.log(err);
     });
-
     const send = Bmob.Query("send_Info");
     send.find().then(res => {
         let stList = [];
@@ -100,12 +99,13 @@ Page({
 
   // 点击卡片,获取绑定的url,跳转到该卡片
   cardSkip: function(e) {
-        console.log(e.target);
+        // console.log(e.currentTarget);
       let that = this;
-      let parameter = JSON.stringify(e.target.dataset.songid) ;
+      let parameter = JSON.stringify(e.currentTarget.dataset.item) ;
     //   console.log(parameter);
       let url ="../detailCard/detailCard?parameter=" + parameter;  //转换成小写
-      console.log(url);
+    //   console.log(url);
+      console.log(e.currentTarget.dataset.item);
       wx.navigateTo({
           url : url
       })
@@ -161,9 +161,11 @@ Page({
       });
     }
   },
-  cancel: function() {
+  cancel: function(e) {
       console.log("cancel！");
+      console.log(e.currentTarget.dataset.item);
   },
+
   send_ex: function() {
       wx.navigateTo({
           url:"../send_ex/send_ex"

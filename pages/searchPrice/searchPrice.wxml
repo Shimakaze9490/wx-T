@@ -1,12 +1,14 @@
 
 <view class="container" wx:if="{{!user_Info.isStaff}}">
-    <view class="section__title">快递价格查询</view>
+    <view class="section__title">快递价格查询
+        <image style="width:80rpx;height:80rpx;float:right;margin-right:160rpx;" src="../../images/图标/快递查询.png" />
+    </view>
     <view style="border:solid 1px gray;margin-bottom:30rpx;margin-top:30rpx;">
         <view class="section" >
             <picker mode="region" bindchange="bindRegionChange_start" value="{{region_start}}" custom-item="{{customItem}}">
                 <view class="picker">
                 <text style="font-size:30rpx;">寄出地址：</text>
-                <p>{{region_start[0]}}-{{region_start[1]}}-{{region_start[2]}}</p>
+                <p style="color:#4FBDFA">{{region_start[0]}}-{{region_start[1]}}-{{region_start[2]}}</p>
                 </view>
             </picker>
         </view>
@@ -15,7 +17,7 @@
             <picker mode="region" bindchange="bindRegionChange_end" value="{{region_end}}" custom-item="{{customItem}}">
                 <view class="picker">
                     <text style="font-size:30rpx;">收件地址：</text>
-                    <p>{{region_end[0]}}-{{region_end[1]}}-{{region_end[2]}}</p>
+                    <p style="color:#4FBDFA">{{region_end[0]}}-{{region_end[1]}}-{{region_end[2]}}</p>
                 </view>
             </picker>
         </view>
@@ -23,22 +25,43 @@
     <view class="section">
         <view class="section__title2">重量(kg)：</view>
         <view class="flex-wrp" style="flex-direction:row;">
-            <view class="flex-item bc_blue" bindtap="sub">-</view>
+            <view class="flex-item bc_blue" style="color:#fff" bindtap="sub">-</view>
             <view class="flex-item bc_red">{{weight}}</view>
-            <view class="flex-item bc_green" bindtap="add">+</view>
+            <view class="flex-item bc_green" style="color:#fff" bindtap="add">+</view>
         </view>
     </view>
 
     <view class="section price">
-        <view>
+        <view class="explain-line">
+            <view class="explain-block"></view>
+            <view class="explain-text">
+                <p>首重：</p>{{first_weight}}元
+            </view>
+        </view>
+        <view class="explain-line">
+            <view class="explain-block"></view>
+            <view class="explain-text">
+                <p>续重：</p>{{s_weight}}元
+            </view>
+        </view>
+        <view class="explain-line">
+            <view class="explain-block"></view>
+            <view class="explain-text">
+                <p >总价：</p>{{price_totle}}元
+            </view>
+        </view>
+        <!-- <view>
+            <view class="explain-block"></view>
             <p>首重：</p>{{first_weight}}元
         </view>
         <view>
+            <view class="explain-block"></view>
             <p>续重：</p>{{s_weight}}元
         </view>
-        <view>
-            <p>总价：</p>{{price_totle}}元
-        </view>
+        <view style="border:none">
+            <view class="explain-block"></view>
+            <p >总价：</p>{{price_totle}}元
+        </view> -->
     </view>
 </view>
 <view style="margin-top:300rpx;text-align:center;" wx:if="{{user_Info.isStaff}}">

@@ -105,7 +105,6 @@ Page({
         let config = {
             title : "提交成功",
             successFn: function() {
-                // console.log("执行回调函数!"); 
                 //查询记录,获取objectId
                 const query = Bmob.Query("express_Info");
                 const query_user = Bmob.Query("user_Info");
@@ -134,7 +133,7 @@ Page({
                         console.log(err);
                     });
                 }).catch(err => {
-
+                    console.log(err);
                 });
                 setTimeout(function() {
                     wx.reLaunch({ //redirectTo

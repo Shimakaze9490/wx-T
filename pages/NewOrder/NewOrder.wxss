@@ -1,10 +1,12 @@
 /* pages/NewOrder/NewOrder.wxss */
 .container {
+    color: #444;
     padding-top: 20rpx;
     /* padding-left: 60rpx;
     padding-right: 60rpx; */
 }
 .title {
+    color: #444;
     text-align: center;
     font-size: 70rpx;
     /* margin: 20rpx; */
@@ -18,24 +20,49 @@
     font-size: 50rpx;
 }
 
-.order_Info, .user_Info {
-    margin-top: 30rpx;
-    margin-bottom: 30rpx;
+.order_Info {
+    border: solid 2rpx #4FBDFA;
+    width: 740rpx;
+    /* margin: 0 auto; */
 }
 
+.order_Info, .user_Info {
+    box-sizing: border-box;
+    width: 740rpx;
+    margin: 0 auto;
+    border: solid 2rpx #4FBDFA;
+    margin-top: 30rpx;
+    margin-bottom: 30rpx;
+    padding-left: 40rpx;
+}
+
+.order_content {
+    font-size: 40rpx;
+}
+.order_content image {
+    margin-left: 30rpx;
+}
+.user_content {
+    padding-left : 26rpx;
+}
 .order_content > view, .user_content > view {
     margin-top: 4rpx;
     width: 600rpx;
 }
-
+.user_content view {
+    margin-bottom: 14rpx;
+}
 .inputBox {
-    border: solid 1px red;
+    border: solid 1px #4FBDFA;
 }
 
 .submit {
-    border: solid 1px red;
+    border: solid 1px #4FBDFA;
+    background-color: #4FBDFA;
+    color: #fff;
+    font-size: 40rpx;
     width: 300rpx;
-    
+    margin-top: 30rpx;
 }
 
 view {
@@ -47,9 +74,29 @@ view {
 }
 
 .order_p {
-    text-indent: 50rpx;
+    /* text-indent: 20rpx; */
     text-decoration: underline;
+    font-size: 40rpx;
     text-indent: 20rpx;
-    margin-left: 20rpx;
-    /* border: solid 1px gray; */
+    margin-left: 10rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    color: #666;
+}
+
+.order_title , .user_title{
+    padding: 6rpx;
+    background-color: #4FBDFA;
+    color: #fff;
+}
+
+.user_Info , .order_Info {
+    position: relative;
+}
+
+.logo {
+    width: 140rpx;height: 100rpx;
+    position: absolute;
+    right: 50rpx;
+    top: 40rpx;
 }

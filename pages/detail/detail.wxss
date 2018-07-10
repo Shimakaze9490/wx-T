@@ -46,11 +46,13 @@ view{
 }
 
 .name{
+    color: #fff;
     display: inline-block;
     font-size: 1.2rem;
 }
 
 .order{
+    color: #fff;
     display: inline-block;
     font-size: .8rem;
     margin-left: 10px;
@@ -60,6 +62,7 @@ view{
 }
 
 .status{
+    color: #fff;
     display: block;
     font-size: .9rem;
     line-height: 20px;
@@ -111,11 +114,11 @@ view{
 }
 
 .substitution {
-  color: #ffffff;
+  color: #EF6262;
   font-size: 40rpx;
   /* border: solid 1px red; */
   text-align: center;
-  background-color: red;
+  background-color: #fff;
   height: 80rpx;
   line-height: 80rpx;
   border-radius: 10rpx;

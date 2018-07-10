@@ -1,2 +1,24 @@
-<!--pages/detailCard/detailCard.wxml-->
-<text>pages/detailCard/detailCard.wxml</text>
+<view class="container">
+    <view class="title">代取订单详情</view>
+    <!-- form表单用于提交信息 -->
+    <form bindsubmit="submit_form">
+        <view class="order_Info">
+            <p class="order_title">订单信息</p>
+            <view class="order_content">
+                <view>订单号码： <p class="order_p">{{parameter.order}} </p></view>
+                <view>物流公司：<p class="order_p">{{parameter.name}} </p></view>
+                <view>物流状态：<p class="order_p">{{parameter.logistic_state == "2" ? "在途中" : "抵达驿站"}} </p></view>
+            </view>
+        </view>
+
+        <view class="user_Info">
+            <p class="user_title">用户信息</p>
+            <view class="user_content">
+                <view>姓名：<input style="width:200rpx;" class="inputBox" maxlength="20" placeholder="" name="name" value="{{parameter.name}}" type="text" ></input> </view>
+                <view>电话号码：<input style="width:200rpx;" class="inputBox" maxlength="20" placeholder="" name="phone_number" value="{{user_Info.phone_number}}" type="text" ></input></view>
+                <view>详细地址：<input  class="inputBox" maxlength="20" placeholder="" name="address" value="{{user_Info.address}}" type="text" ></input></view>
+            </view>
+        </view>
+        <button class="submit" formType="submit">提交</button>
+    </form>
+</view>

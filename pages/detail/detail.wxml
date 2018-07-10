@@ -1,7 +1,7 @@
 <view class="box">
   <view class="header">
     <view class="logo">
-      <image src="{{detailList.LogoSrc}}"></image>
+      <image style="border:solid 6rpx #4FBDFA;" src="{{detailList.LogoSrc}}"></image>
     </view>
     <view class="content">
       <view class="title">

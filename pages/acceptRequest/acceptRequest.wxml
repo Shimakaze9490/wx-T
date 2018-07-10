@@ -8,7 +8,7 @@
         </view>
     </view>
 
-    <button catch:tap="cardSkip" data-songId="data-songId" songId="songId">测试</button>
+    <!-- <button catch:tap="cardSkip" data-songId="data-songId" songId="songId">测试</button> -->
     <swiper current="{{currentTab}}" class="swiper-box" duration="200"  bindchange="bindChange">
         <swiper-item class="swiper_item">
             <view class="reminder" wx:if="{{mycreate_cards.length == 0 && isRequesting == false}}">
@@ -24,7 +24,7 @@
                     <view class="right_part" catch:tap="cardSkip" data-songId="{{item}}">
                         <view catch:tap="cardSkip" data-songId="{{item}}">请求状态：</view>
                         <view catch:tap="cardSkip" data-songId="{{item}}">{{request_state_c[item.request_state]}}</view>
-                        <view catch:tap="cardSkip" data-songId="{{item}}"> <button class="cancel" bindtap="cancel">接受任务</button> </view>
+                        <view  catch:tap="cardSkip" data-songId="{{item}}"> <button class="cancel" catch:tap="cardSkip" data-item="{{item}}">接受任务</button> </view>
                     </view>
                 </view>
             </view>
@@ -44,7 +44,7 @@
                     <view class="right_part">
                         <view>请求状态：</view>
                         <view>{{request_state_c[item.request_state]}}</view>
-                        <view> <button class="cancel" bindtap="cancel">接受任务</button> </view>
+                        <view > <button  class="cancel" bindtap="cancel">接受任务</button> </view>
                     </view>
                 </view>
             </view>

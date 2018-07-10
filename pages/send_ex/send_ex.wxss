@@ -33,15 +33,17 @@
 }
 
 .inputBox {
-    border: solid 1px red;
+    border: solid 3rpx #4FBDFA;
 }
 
 .submit {
-    border: solid 1px red;
+    border: solid 3rpx #4FBDFA;
     width: 180rpx;
     font-size: 40rpx;
     height: 80rpx;
     line-height: 80rpx;
+    background-color: #4FBDFA;
+    color: #fff;
 }
 
 view {

@@ -9,6 +9,11 @@ Bmob.User.login('shimakaze', '123456').then(res => {
 
 
 App({
+    data: {
+        globalData:{
+            userInfo : undefined
+        }
+    },
     onLaunch: function () {
         var logs = wx.getStorageSync('logs') || []
         logs.unshift(Date.now())
@@ -33,15 +38,12 @@ App({
                             if (this.userInfoReadyCallback) {
                                 this.userInfoReadyCallback(res)
                             };
-                            console.log(res);
                             let res_log = res;  //api返回
                             let openId = res_log.userInfo.avatarUrl;
                             let user_Info = {};  //用户信息对象
-                            
                             // 判断是否是“小件员”角色
                             const query_staff = Bmob.Query("staff_Info");
-                            // query_staff.equalTo("openId","===",openId);
-                            query_staff.equalTo("objectId","===","aaUl2s999C"); //UI2s999c认证
+                            query_staff.equalTo("openId","===",res.userInfo.avatarUrl); //
                             query_staff.find().then(res => {
                                 if(res.length > 0) {
                                     
